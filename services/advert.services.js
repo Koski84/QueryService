@@ -1,8 +1,8 @@
 const Advert = require('../models/advert.model')
 
-exports.getAdverts = async function (query) {
+exports.getAdverts = async function () {
   try {
-    var adverts = await Advert.find(query)
+    const adverts = await Advert.find().populate('images')
     return adverts
   } catch (e) {
     console.error(e)
