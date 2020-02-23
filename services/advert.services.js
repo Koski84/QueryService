@@ -2,8 +2,7 @@ const Advert = require('../models/advert.model')
 
 exports.getAdverts = async function () {
   try {
-    const adverts = await Advert.find()
-    return adverts
+    return await Advert.find()
   } catch (e) {
     console.error(e)
     throw Error('Error while loading adverts')
@@ -12,8 +11,7 @@ exports.getAdverts = async function () {
 
 exports.getAdvertsWithImages = async function () {
   try {
-    const adverts = await Advert.find().populate('images')
-    return adverts
+    return await Advert.find().populate('images')
   } catch (e) {
     console.error(e)
     throw Error('Error while loading adverts with images')
