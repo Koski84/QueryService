@@ -1,8 +1,8 @@
-const advert = require('./advert.model')
+const Advert = require('../models/advert.model')
 
 exports.getAdverts = async function (query) {
   try {
-    var adverts = await advert.find(query)
+    var adverts = await Advert.find(query)
     return adverts
   } catch (e) {
     console.error(e)

@@ -1,4 +1,4 @@
-const advertService = require('./advert.services')
+const advertService = require('../services/advert.services')
 
 exports.getAdverts = async function (req, res) {
   try {

@@ -1,9 +1,10 @@
+require('dotenv').config('.env')
 const express = require('express')
-const advert = require('./advert.routes')
+const advert = require('./routes/advert.routes')
 
 const app = express()
 app.use('/advert', advert)
 
-app.listen(9020, () => {
-  console.debug('Listening port 9020')
+app.listen(process.env.PORT, () => {
+  console.debug(`Listening port ${process.env.PORT}`)
 })
