@@ -2,7 +2,7 @@ var advert = require('./advert.model')
 
 exports.getAdverts = async function (query) {
   try {
-    console.log(advert);
+    console.log(advert)
     var adverts = await advert.find(query)
     return adverts
   } catch (e) {
