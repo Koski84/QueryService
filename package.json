@@ -1,0 +1,23 @@
+{
+  "name": "queryservice",
+  "version": "1.0.0",
+  "description": "QueryService for PT10",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Koski84/QueryService.git"
+  },
+  "author": "Óscar Lamelas Damas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Koski84/QueryService/issues"
+  },
+  "homepage": "https://github.com/Koski84/QueryService#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2"
+  }
+}
