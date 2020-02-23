@@ -1,7 +1,7 @@
-var express = require('express')
-var advert = require('./advert.routes')
+const express = require('express')
+const advert = require('./advert.routes')
 
-var app = express()
+const app = express()
 app.use('/advert', advert)
 
 app.listen(9020, () => {

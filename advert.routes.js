@@ -1,7 +1,6 @@
-var express = require('express')
-var router = express.Router()
-
-var advertController = require('./advert.controllers')
+const express = require('express')
+const router = express.Router()
+const advertController = require('./advert.controllers')
 
 router.get('/', advertController.getAdverts)
 
