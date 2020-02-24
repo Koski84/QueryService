@@ -1,0 +1,42 @@
+[1mdiff --git a/controllers/advert.controllers.js b/controllers/advert.controllers.js[m
+[1mindex b70837e..d60d0c5 100644[m
+[1m--- a/controllers/advert.controllers.js[m
+[1m+++ b/controllers/advert.controllers.js[m
+[36m@@ -2,7 +2,15 @@[m [mconst advertService = require('../services/advert.services')[m
+ [m
+ exports.getAdverts = async function (req, res) {[m
+   try {[m
+[31m-    const adverts = await advertService.getAdverts()[m
+[32m+[m[32m    const { minScore = -999, maxScore = 999, page = 0, limit = 10, sortBy = ''} = req.query[m
+[32m+[m[32m    const options = {[m
+[32m+[m[32m      minScore: parseInt(minScore),[m
+[32m+[m[32m      maxScore: parseInt(maxScore),[m
+[32m+[m[32m      page: parseInt(page),[m
+[32m+[m[32m      limit: parseInt(limit),[m
+[32m+[m[32m      sortBy[m
+[32m+[m[32m    }[m
+[32m+[m[32m    const adverts = await advertService.getAdverts(options)[m
+ [m
+     return res.status(200).json({ status: 200, data: adverts, message: 'Succesfully adverts retrieved' })[m
+   } catch (e) {[m
+[1mdiff --git a/services/advert.services.js b/services/advert.services.js[m
+[1mindex bde9014..907417a 100644[m
+[1m--- a/services/advert.services.js[m
+[1m+++ b/services/advert.services.js[m
+[36m@@ -1,8 +1,14 @@[m
+ const Advert = require('../models/advert.model')[m
+ [m
+[31m-exports.getAdverts = async function () {[m
+[32m+[m[32mexports.getAdverts = async function ({ minScore, maxScore, page, limit, sortBy }) {[m
+   try {[m
+[31m-    return await Advert.find()[m
+[32m+[m[32m    const adverts = Advert.find()[m
+[32m+[m[32m      .where('score').gte(minScore).lte(maxScore)[m
+[32m+[m[32m      .skip(page * limit)[m
+[32m+[m[32m      .limit(limit)[m
+[32m+[m[32m      .sort(sortBy)[m
+[32m+[m[41m      [m
+[32m+[m[32m    return adverts;[m
+   } catch (e) {[m
+     console.error(e)[m
+     throw Error('Error while loading adverts')[m
